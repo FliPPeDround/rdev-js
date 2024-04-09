@@ -9,7 +9,7 @@
 ## Usage
 
 ```js
-  import { buttonPress, Button } from '@rdev-js/core';
+import { Button, buttonPress } from '@rdev-js/core'
 
-  buttonPress(Button.Left);
+buttonPress(Button.Left)
 ```
