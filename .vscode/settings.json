@@ -3,6 +3,7 @@
     "aarch",
     "androideabi",
     "armv",
+    "clippy",
     "gnueabihf",
     "msvc",
     "rdev",
