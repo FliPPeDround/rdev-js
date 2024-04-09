@@ -295,14 +295,15 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { Button, Key, jsDisplaySize, mouseMove, buttonPress, buttonRelease, wheel, keyPress, keyRelease } = nativeBinding
+const { Button, Key, displaySize, mouseMove, buttonPress, buttonRelease, wheel, keyPress, keyRelease, listen } = nativeBinding
 
 module.exports.Button = Button
 module.exports.Key = Key
-module.exports.jsDisplaySize = jsDisplaySize
+module.exports.displaySize = displaySize
 module.exports.mouseMove = mouseMove
 module.exports.buttonPress = buttonPress
 module.exports.buttonRelease = buttonRelease
 module.exports.wheel = wheel
 module.exports.keyPress = keyPress
 module.exports.keyRelease = keyRelease
+module.exports.listen = listen

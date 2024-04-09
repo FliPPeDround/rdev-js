@@ -115,10 +115,135 @@ export const enum Key {
   KpDelete = 103,
   Function = 104
 }
-export function jsDisplaySize(): Uint32Array
+/**
+ * Returns the size in pixels of the main screen.
+ * This is useful to use with x, y from MouseMove Event.
+ *
+ * ### Example
+ * ```javascript
+ * import { displaySize } = from'@rdev-js/core';
+ *
+ * const [width, height] = displaySize();
+ * ```
+ *
+ * @returns {[width:number, height:number]} The size in pixels of the main screen.
+ */
+export function displaySize(): [width:number, height:number]
+/**
+ *  Move the mouse cursor to the specified x and y coordinates.
+ *
+ * ### Example
+ * ```javascript
+ * import { mouseMove } from '@rdev-js/core';
+ *
+ * mouseMove(100, 100);
+ * ```
+ *
+ * @param {number} x The x coordinate of the mouse.
+ * @param {number} y The y coordinate of the mouse.
+ */
 export function mouseMove(x: number, y: number): void
+/**
+ * simulate an individual mouse button press event.
+ *
+ * ### Example
+ * ```javascript
+ * import { buttonPress, Button } from '@rdev-js/core';
+ *
+ * buttonPress(Button.Left);
+ * ```
+ *
+ * @param {Button} button The button to press.
+ */
 export function buttonPress(button: Button): void
+/**
+ * simulate an individual mouse button release event.
+ *
+ * ### Example
+ * ```javascript
+ * import { buttonRelease, Button } from '@rdev-js/core';
+ *
+ * buttonRelease(Button.Left);
+ * ```
+ *
+ * @param {Button} button The button to release.
+ */
 export function buttonRelease(button: Button): void
+/**
+ * Simulate a scroll wheel event.
+ *
+ * ### Example
+ * ```javascript
+ * import { wheel } from '@rdev-js/core';
+ *
+ * wheel(0, 10);
+ * ```
+ *
+ * @param {number} deltaX represents horizontal scroll. Positive values correspond to scrolling right and negative values correspond to scrolling left.
+ * @param {number} deltaY represents vertical scroll. Positive values correspond to scrolling down and negative values correspond to scrolling up.
+ */
 export function wheel(deltaX: number, deltaY: number): void
+/**
+ * Simulate a key press event.
+ *
+ * ### Example
+ * ```javascript
+ * import { keyPress, Key } from '@rdev-js/core';
+ *
+ * keyPress(Key.KeyA);
+ * ```
+ *
+ * @param {Key} key The key to press.
+ */
 export function keyPress(key: Key): void
+/**
+ * Simulate a key release event.
+ *
+ * ### Example
+ * ```javascript
+ * import { keyRelease, Key } from '@rdev-js/core';
+ *
+ * keyRelease(Key.KeyA);
+ * ```
+ *
+ * @param {Key} key The key to release.
+ */
 export function keyRelease(key: Key): void
+/**
+ * Listening to global events.
+ * Caveat: On MacOS, you require the listen loop needs to be the primary app (no fork before) and need to have accessibility settings enabled.
+ *
+ * ### Example
+ * ```javascript
+ * import { listen } from '@rdev-js/core';
+ *
+ * listen((event) => {
+ *     console.log(event);
+ * });
+ * ```
+ *
+ * @param {callback} callback The callback function to be called when an event occurs.
+ */
+export function listen(
+callback: (
+event: {
+time: number,
+type: {
+direction: 'KeyPress' | 'KeyRelease'
+key: keyof typeof Key
+} | {
+direction: 'ButtonPress' | 'ButtonRelease'
+key: keyof typeof Button
+} | {
+direction: 'MouseMove'
+x: number,
+y: number
+} | {
+direction: 'Wheel'
+deltaX: number,
+deltaY: number
+},
+name?: string
+}
+) => void
+): void

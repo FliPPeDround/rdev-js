@@ -5,7 +5,6 @@ import {
   Button,
   Key,
   keyPress,
-  callThreadsafeFunction
 } from '@rdev-js/core'
 
 function sleep(ms) {

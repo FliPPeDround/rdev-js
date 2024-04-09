@@ -25,6 +25,7 @@
   "license": "MIT",
   "devDependencies": {
     "@napi-rs/cli": "^2.18.0",
+    "nodemon": "^3.1.0",
     "ava": "^6.0.1"
   },
   "ava": {
@@ -43,8 +44,5 @@
     "test": "ava",
     "universal": "napi universal",
     "version": "napi version"
-  },
-  "dependencies": {
-    "nodemon": "^3.1.0"
   }
 }
