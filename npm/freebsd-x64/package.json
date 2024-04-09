@@ -7,11 +7,11 @@
   "cpu": [
     "x64"
   ],
+  "license": "MIT",
   "main": "core.freebsd-x64.node",
   "files": [
     "core.freebsd-x64.node"
   ],
-  "license": "MIT",
   "engines": {
     "node": ">= 10"
   }

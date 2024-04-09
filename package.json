@@ -1,6 +1,7 @@
 {
   "name": "@rdev-js/core",
   "version": "0.0.0",
+  "license": "MIT",
   "main": "index.js",
   "types": "index.d.ts",
   "napi": {
@@ -22,15 +23,6 @@
       ]
     }
   },
-  "license": "MIT",
-  "devDependencies": {
-    "@napi-rs/cli": "^2.18.0",
-    "nodemon": "^3.1.0",
-    "ava": "^6.0.1"
-  },
-  "ava": {
-    "timeout": "3m"
-  },
   "engines": {
     "node": ">= 10"
   },
@@ -43,6 +35,18 @@
     "prepublishOnly": "napi prepublish -t npm",
     "test": "ava",
     "universal": "napi universal",
-    "version": "napi version"
+    "version": "napi version",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.13.0",
+    "@napi-rs/cli": "^2.18.0",
+    "ava": "^6.0.1",
+    "eslint": "^9.0.0",
+    "nodemon": "^3.1.0"
+  },
+  "ava": {
+    "timeout": "3m"
   }
 }
