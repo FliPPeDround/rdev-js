@@ -19,7 +19,8 @@ macro_rules! create_enum_mapping {
 
 create_enum_mapping!(JsButton, Button, [Left, Right, Middle]);
 create_enum_mapping!(
-  JsKey, Key,
+  JsKey,
+  Key,
   [
     Alt,
     AltGr,
