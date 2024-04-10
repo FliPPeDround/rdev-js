@@ -47,6 +47,7 @@ jobs:
   
           - host: ubuntu-latest
             target: x86_64-unknown-linux-gnu
+            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
             setup: |
               sudo apt-get update
               sudo apt-get install libxdo-dev -y
@@ -61,11 +62,13 @@ jobs:
           version: 8
       - name: Setup node
         uses: actions/setup-node@v4
+        if: ${{ !matrix.settings.docker }}
         with:
           node-version: 20
           cache: pnpm
       - name: Install
         uses: dtolnay/rust-toolchain@stable
+        if: ${{ !matrix.settings.docker }}
         with:
           toolchain: stable
           targets: ${{ matrix.settings.target }}
@@ -96,8 +99,16 @@ jobs:
           node-version: 20
           cache: pnpm
           architecture: x86
+      - name: Build in docker
+        uses: addnab/docker-run-action@v3
+        if: ${{ matrix.settings.docker }}
+        with:
+          image: ${{ matrix.settings.docker }}
+          options: '--user 0:0 -v ${{ github.workspace }}/.cargo-cache/git/db:/usr/local/cargo/git/db -v ${{ github.workspace }}/.cargo/registry/cache:/usr/local/cargo/registry/cache -v ${{ github.workspace }}/.cargo/registry/index:/usr/local/cargo/registry/index -v ${{ github.workspace }}:/build -w /build'
+          run: ${{ matrix.settings.build }}
       - name: Build
         run: ${{ matrix.settings.build }}
+        if: ${{ !matrix.settings.docker }}
         shell: bash
       - name: Upload artifact
         uses: actions/upload-artifact@v4
