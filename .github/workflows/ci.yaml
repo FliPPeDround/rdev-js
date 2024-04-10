@@ -41,6 +41,7 @@ jobs:
               sudo apt-get update
               sudo apt-get install libx11-dev -y
               sudo apt-get install pkg-config -y
+              sudo apt-get install xorg -y
             build: pnpm build --target x86_64-unknown-linux-gnu
           - host: ubuntu-latest
             target: x86_64-unknown-linux-musl
