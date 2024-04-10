@@ -45,12 +45,12 @@ jobs:
             target: aarch64-pc-windows-msvc
             build: pnpm build --target aarch64-pc-windows-msvc
   
-          # - host: ubuntu-latest
-          #   target: x86_64-unknown-linux-gnu
-          #   setup: |
-          #     sudo apt-get update
-          #     sudo apt-get install libx11-dev -y
-          #   build: pnpm build --target x86_64-unknown-linux-gnu
+          - host: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            setup: |
+              sudo apt-get update
+              sudo apt-get install libxdo-dev -y
+            build: pnpm build --target x86_64-unknown-linux-gnu
 
     name: stable - ${{ matrix.settings.target }} - node@20
     runs-on: ${{ matrix.settings.host }}
