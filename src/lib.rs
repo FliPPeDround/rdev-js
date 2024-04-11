@@ -196,38 +196,38 @@ pub fn start_listening(callback: JsFunction) -> Result<()> {
       let event_type_js = match event.event_type {
         KeyPress(key) => {
           let mut obj = env.create_object()?;
-          obj.set_named_property("direction", env.create_string("KeyPress")?)?;
-          obj.set_named_property("key", env.create_string(&format!("{:?}", key))?)?;
+          obj.set_named_property("direction", "KeyPress")?;
+          obj.set_named_property("key", &format!("{:?}", key))?;
           obj
         }
         KeyRelease(key) => {
           let mut obj = env.create_object()?;
-          obj.set_named_property("direction", env.create_string("KeyRelease")?)?;
-          obj.set_named_property("key", env.create_string(&format!("{:?}", key))?)?;
+          obj.set_named_property("direction", "KeyRelease")?;
+          obj.set_named_property("key", &format!("{:?}", key))?;
           obj
         }
         ButtonPress(button) => {
           let mut obj = env.create_object()?;
-          obj.set_named_property("direction", env.create_string("ButtonPress")?)?;
-          obj.set_named_property("key", env.create_string(&format!("{:?}", button))?)?;
+          obj.set_named_property("direction", "ButtonPress")?;
+          obj.set_named_property("key", &format!("{:?}", button))?;
           obj
         }
         ButtonRelease(button) => {
           let mut obj = env.create_object()?;
-          obj.set_named_property("direction", env.create_string("ButtonRelease")?)?;
-          obj.set_named_property("key", env.create_string(&format!("{:?}", button))?)?;
+          obj.set_named_property("direction", "ButtonRelease")?;
+          obj.set_named_property("key", &format!("{:?}", button))?;
           obj
         }
         MouseMove { x, y } => {
           let mut obj = env.create_object()?;
-          obj.set_named_property("direction", env.create_string("MouseMove")?)?;
+          obj.set_named_property("direction", "MouseMove")?;
           obj.set_named_property("x", env.create_double(x)?)?;
           obj.set_named_property("y", env.create_double(y)?)?;
           obj
         }
         Wheel { delta_x, delta_y } => {
           let mut obj = env.create_object()?;
-          obj.set_named_property("direction", env.create_string("Wheel")?)?;
+          obj.set_named_property("direction", "Wheel")?;
           obj.set_named_property("deltaX", env.create_int64(delta_x)?)?;
           obj.set_named_property("deltaY", env.create_int64(delta_y)?)?;
           obj
