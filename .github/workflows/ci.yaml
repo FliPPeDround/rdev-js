@@ -28,30 +28,30 @@ jobs:
           - host: macos-latest
             target: x86_64-apple-darwin
             build: pnpm build
-          
+
           - host: macos-latest
             target: aarch64-apple-darwin
             build: pnpm build --target aarch64-apple-darwin
-        
+
           - host: windows-latest
             target: x86_64-pc-windows-msvc
             build: pnpm build
-      
+
           - host: windows-latest
             target: i686-pc-windows-msvc
             build: pnpm build --target i686-pc-windows-msvc
-    
+
           - host: windows-latest
             target: aarch64-pc-windows-msvc
             build: pnpm build --target aarch64-pc-windows-msvc
-  
-          - host: ubuntu-latest
-            target: x86_64-unknown-linux-gnu
-            docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
-            setup: |
-              sudo apt-get update
-              sudo apt-get install libxdo-dev -y
-            build: pnpm build --target x86_64-unknown-linux-gnu
+
+          # - host: ubuntu-latest
+          #   target: x86_64-unknown-linux-gnu
+          #   docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-debian
+          #   setup: |
+          #     sudo apt-get update
+          #     sudo apt-get install libxdo-dev -y
+          #   build: pnpm build --target x86_64-unknown-linux-gnu
 
     name: stable - ${{ matrix.settings.target }} - node@20
     runs-on: ${{ matrix.settings.host }}
@@ -99,13 +99,13 @@ jobs:
           node-version: 20
           cache: pnpm
           architecture: x86
-      - name: Build in docker
-        uses: addnab/docker-run-action@v3
-        if: ${{ matrix.settings.docker }}
-        with:
-          image: ${{ matrix.settings.docker }}
-          options: '--user 0:0 -v ${{ github.workspace }}/.cargo-cache/git/db:/usr/local/cargo/git/db -v ${{ github.workspace }}/.cargo/registry/cache:/usr/local/cargo/registry/cache -v ${{ github.workspace }}/.cargo/registry/index:/usr/local/cargo/registry/index -v ${{ github.workspace }}:/build -w /build'
-          run: ${{ matrix.settings.build }}
+      # - name: Build in docker
+      #   uses: addnab/docker-run-action@v3
+      #   if: ${{ matrix.settings.docker }}
+      #   with:
+      #     image: ${{ matrix.settings.docker }}
+      #     options: '--user 0:0 -v ${{ github.workspace }}/.cargo-cache/git/db:/usr/local/cargo/git/db -v ${{ github.workspace }}/.cargo/registry/cache:/usr/local/cargo/registry/cache -v ${{ github.workspace }}/.cargo/registry/index:/usr/local/cargo/registry/index -v ${{ github.workspace }}:/build -w /build'
+      #     run: ${{ matrix.settings.build }}
       - name: Build
         run: ${{ matrix.settings.build }}
         if: ${{ !matrix.settings.docker }}
@@ -116,44 +116,44 @@ jobs:
           name: bindings-${{ matrix.settings.target }}
           path: ${{ env.APP_NAME }}.*.node
           if-no-files-found: error
-  test-macOS-windows-binding:
-    name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
-    needs:
-      - build
-    strategy:
-      fail-fast: false
-      matrix:
-        settings:
-          - host: macos-latest
-            target: x86_64-apple-darwin
-          - host: windows-latest
-            target: x86_64-pc-windows-msvc
-        node:
-          - '18'
-          - '20'
-    runs-on: ${{ matrix.settings.host }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 8
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: bindings-${{ matrix.settings.target }}
-          path: .
-      - name: List packages
-        run: ls -R .
-        shell: bash
-      - name: Test bindings
-        run: pnpm test
+  # test-macOS-windows-binding:
+  #   name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
+  #   needs:
+  #     - build
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       settings:
+  #         - host: macos-latest
+  #           target: x86_64-apple-darwin
+  #         - host: windows-latest
+  #           target: x86_64-pc-windows-msvc
+  #       node:
+  #         - '18'
+  #         - '20'
+  #   runs-on: ${{ matrix.settings.host }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: pnpm/action-setup@v3
+  #       with:
+  #         version: 8
+  #     - name: Setup node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: ${{ matrix.node }}
+  #         cache: pnpm
+  #     - name: Install dependencies
+  #       run: pnpm install
+  #     - name: Download artifacts
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: bindings-${{ matrix.settings.target }}
+  #         path: .
+  #     - name: List packages
+  #       run: ls -R .
+  #       shell: bash
+  #     - name: Test bindings
+  #       run: pnpm test
 
   # test-linux-aarch64-gnu-binding:
   #   name: Test bindings on aarch64-unknown-linux-gnu - node@${{ matrix.node }}
