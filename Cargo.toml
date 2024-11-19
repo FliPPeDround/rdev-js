@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "rdev-js_core"
+name = "rdev-js"
 version = "0.0.0"
 
 [lib]

@@ -1,16 +1,16 @@
 {
-  "name": "rdev-js-win32-x64-msvc",
+  "name": "rdev-js-darwin-arm64",
   "version": "0.0.0",
   "os": [
-    "win32"
+    "darwin"
   ],
   "cpu": [
-    "x64"
+    "arm64"
   ],
   "license": "MIT",
-  "main": "rdev-js.win32-x64-msvc.node",
+  "main": "rdev-js.darwin-arm64.node",
   "files": [
-    "rdev-js.win32-x64-msvc.node"
+    "rdev-js.darwin-arm64.node"
   ],
   "engines": {
     "node": ">= 10"

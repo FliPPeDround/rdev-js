@@ -1,0 +1,21 @@
+{
+  "name": "rdev-js-linux-x64-gnu",
+  "version": "0.0.0",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "license": "MIT",
+  "main": "rdev-js.linux-x64-gnu.node",
+  "files": [
+    "rdev-js.linux-x64-gnu.node"
+  ],
+  "engines": {
+    "node": ">= 10"
+  },
+  "libc": [
+    "glibc"
+  ]
+}

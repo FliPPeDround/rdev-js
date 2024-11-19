@@ -1,5 +1,5 @@
 import process from 'node:process'
-import rdev from '@rdev-js/core'
+import rdev from 'rdev-js'
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))

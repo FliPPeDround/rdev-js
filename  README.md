@@ -3,13 +3,13 @@
 ## Install
 
 ```bash
-  npm i @rdev-js/core
+  npm i rdev-js
 ```
 
 ## Usage
 
 ```js
-import { Button, buttonPress } from '@rdev-js/core'
+import { Button, buttonPress } from 'rdev-js'
 
 buttonPress(Button.Left)
 ```

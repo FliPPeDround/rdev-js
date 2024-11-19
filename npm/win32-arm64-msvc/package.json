@@ -1,5 +1,5 @@
 {
-  "name": "@rdev-js/core-win32-arm64-msvc",
+  "name": "rdev-js-win32-arm64-msvc",
   "version": "0.0.0",
   "os": [
     "win32"
@@ -8,9 +8,9 @@
     "arm64"
   ],
   "license": "MIT",
-  "main": "core.win32-arm64-msvc.node",
+  "main": "rdev-js.win32-arm64-msvc.node",
   "files": [
-    "core.win32-arm64-msvc.node"
+    "rdev-js.win32-arm64-msvc.node"
   ],
   "engines": {
     "node": ">= 10"

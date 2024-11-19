@@ -1,5 +1,5 @@
 {
-  "watch": ["src/lib.rs", "src/enum_mapping.rs"],
-  "ext": "less",
-  "exec": "pnpm build:debug"
+  "watch": ["src"],
+  "ext": "rs",
+  "exec": "yarn build:debug"
 }

@@ -12,6 +12,6 @@
     "dev": "node index.js"
   },
   "dependencies": {
-    "@rdev-js/core": "workspace:*"
+    "rdev-js": "workspace:*"
   }
 }

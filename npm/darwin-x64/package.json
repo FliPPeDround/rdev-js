@@ -1,5 +1,5 @@
 {
-  "name": "@rdev-js/core-darwin-x64",
+  "name": "rdev-js-darwin-x64",
   "version": "0.0.0",
   "os": [
     "darwin"
@@ -8,9 +8,9 @@
     "x64"
   ],
   "license": "MIT",
-  "main": "core.darwin-x64.node",
+  "main": "rdev-js.darwin-x64.node",
   "files": [
-    "core.darwin-x64.node"
+    "rdev-js.darwin-x64.node"
   ],
   "engines": {
     "node": ">= 10"
