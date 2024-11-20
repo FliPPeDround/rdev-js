@@ -42,5 +42,8 @@
   },
   "workspaces": [
     "playground"
-  ]
+  ],
+  "dependencies": {
+    "bumpp": "^9.8.1"
+  }
 }
