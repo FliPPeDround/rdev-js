@@ -1,5 +1,3 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
-
 /* tslint:disable */
 /* eslint-disable */
 /* prettier-ignore */

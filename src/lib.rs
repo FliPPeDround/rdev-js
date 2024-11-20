@@ -29,7 +29,7 @@ extern crate napi_derive;
 ///
 /// ### Example
 /// ```javascript
-/// import { displaySize } = from'@rdev-js/core';
+/// import { displaySize } = from'rdev-js';
 ///
 /// const [width, height] = displaySize();
 /// ```
@@ -45,7 +45,7 @@ pub fn js_display_size() -> Uint32Array {
 ///
 /// ### Example
 /// ```javascript
-/// import { mouseMove } from '@rdev-js/core';
+/// import { mouseMove } from 'rdev-js';
 ///
 /// mouseMove(100, 100);
 /// ```
@@ -61,7 +61,7 @@ pub fn mouse_move(x: f64, y: f64) {
 ///
 /// ### Example
 /// ```javascript
-/// import { buttonPress, Button } from '@rdev-js/core';
+/// import { buttonPress, Button } from 'rdev-js';
 ///
 /// buttonPress(Button.Left);
 /// ```
@@ -76,7 +76,7 @@ pub fn button_press(button: JsButton) {
 ///
 /// ### Example
 /// ```javascript
-/// import { buttonRelease, Button } from '@rdev-js/core';
+/// import { buttonRelease, Button } from 'rdev-js';
 ///
 /// buttonRelease(Button.Left);
 /// ```
@@ -91,7 +91,7 @@ pub fn button_release(button: JsButton) {
 ///
 /// ### Example
 /// ```javascript
-/// import { wheel } from '@rdev-js/core';
+/// import { wheel } from 'rdev-js';
 ///
 /// wheel(0, 10);
 /// ```
@@ -107,7 +107,7 @@ pub fn wheel(delta_x: i64, delta_y: i64) {
 ///
 /// ### Example
 /// ```javascript
-/// import { keyPress, Key } from '@rdev-js/core';
+/// import { keyPress, Key } from 'rdev-js';
 ///
 /// keyPress(Key.KeyA);
 /// ```
@@ -122,7 +122,7 @@ pub fn key_press(key: JsKey) {
 ///
 /// ### Example
 /// ```javascript
-/// import { keyRelease, Key } from '@rdev-js/core';
+/// import { keyRelease, Key } from 'rdev-js';
 ///
 /// keyRelease(Key.KeyA);
 /// ```
@@ -163,7 +163,7 @@ pub fn key_release(key: JsKey) {
 ///
 /// ### Example
 /// ```javascript
-/// import { listen } from '@rdev-js/core';
+/// import { listen } from 'rdev-js';
 ///
 /// listen((event) => {
 ///     console.log(event);

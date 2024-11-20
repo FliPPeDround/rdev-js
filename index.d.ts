@@ -121,7 +121,7 @@ export const enum Key {
  *
  * ### Example
  * ```javascript
- * import { displaySize } = from'@rdev-js/core';
+ * import { displaySize } = from'rdev-js';
  *
  * const [width, height] = displaySize();
  * ```
@@ -134,7 +134,7 @@ export declare function displaySize(): [width:number, height:number]
  *
  * ### Example
  * ```javascript
- * import { mouseMove } from '@rdev-js/core';
+ * import { mouseMove } from 'rdev-js';
  *
  * mouseMove(100, 100);
  * ```
@@ -148,7 +148,7 @@ export declare function mouseMove(x: number, y: number): void
  *
  * ### Example
  * ```javascript
- * import { buttonPress, Button } from '@rdev-js/core';
+ * import { buttonPress, Button } from 'rdev-js';
  *
  * buttonPress(Button.Left);
  * ```
@@ -161,7 +161,7 @@ export declare function buttonPress(button: Button): void
  *
  * ### Example
  * ```javascript
- * import { buttonRelease, Button } from '@rdev-js/core';
+ * import { buttonRelease, Button } from 'rdev-js';
  *
  * buttonRelease(Button.Left);
  * ```
@@ -174,7 +174,7 @@ export declare function buttonRelease(button: Button): void
  *
  * ### Example
  * ```javascript
- * import { wheel } from '@rdev-js/core';
+ * import { wheel } from 'rdev-js';
  *
  * wheel(0, 10);
  * ```
@@ -188,7 +188,7 @@ export declare function wheel(deltaX: number, deltaY: number): void
  *
  * ### Example
  * ```javascript
- * import { keyPress, Key } from '@rdev-js/core';
+ * import { keyPress, Key } from 'rdev-js';
  *
  * keyPress(Key.KeyA);
  * ```
@@ -201,7 +201,7 @@ export declare function keyPress(key: Key): void
  *
  * ### Example
  * ```javascript
- * import { keyRelease, Key } from '@rdev-js/core';
+ * import { keyRelease, Key } from 'rdev-js';
  *
  * keyRelease(Key.KeyA);
  * ```
@@ -215,7 +215,7 @@ export declare function keyRelease(key: Key): void
  *
  * ### Example
  * ```javascript
- * import { listen } from '@rdev-js/core';
+ * import { listen } from 'rdev-js';
  *
  * listen((event) => {
  *     console.log(event);
