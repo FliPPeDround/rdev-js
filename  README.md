@@ -6,6 +6,8 @@
   npm i rdev-js
 ```
 
+<img src="./.github/demo/demo.gif">
+
 ## Usage
 
 ```js

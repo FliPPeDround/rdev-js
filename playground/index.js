@@ -1,35 +1,68 @@
-import process from 'node:process'
-import rdev from 'rdev-js'
+import { Button, buttonPress, buttonRelease, displaySize, Key, keyPress, listen, mouseMove } from 'rdev-js'
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+function moveMouseSmoothly(startX, startY, endX, endY, steps, delay) {
+  const deltaX = (endX - startX) / steps
+  const deltaY = (endY - startY) / steps
+
+  let currentX = startX
+  let currentY = startY
+
+  function moveStep(step) {
+    if (step > steps)
+      return
+
+    currentX += deltaX
+    currentY += deltaY
+    mouseMove(currentX, currentY)
+
+    setTimeout(() => moveStep(step + 1), delay)
+  }
+
+  moveStep(1)
+}
+
 async function main() {
-  rdev.mouseMove(700, 900)
-  rdev.buttonPress(rdev.Button.Left)
+  moveMouseSmoothly(1000, 1000, 600, 700, 100, 5)
+  buttonPress(Button.Left)
   await sleep(500)
-  rdev.buttonRelease(rdev.Button.Left)
+  buttonRelease(Button.Left)
   await sleep(1000)
-  rdev.keyPress(rdev.Key.KeyA)
+  keyPress(Key.KeyH)
+  keyPress(Key.KeyE)
+  keyPress(Key.KeyL)
+  await sleep(50)
+  keyPress(Key.KeyL)
+  keyPress(Key.KeyO)
+  keyPress(Key.Space)
   await sleep(500)
-  rdev.keyPress(rdev.Key.KeyA)
+  keyPress(Key.KeyW)
+  keyPress(Key.KeyO)
+  keyPress(Key.KeyR)
+  keyPress(Key.KeyL)
+  keyPress(Key.KeyD)
+  await sleep(500)
+  for (let i = 0; i < 5; i++) {
+    keyPress(Key.Backspace)
+    await sleep(100)
+  }
+  keyPress(Key.KeyR)
+  keyPress(Key.KeyD)
+  keyPress(Key.KeyE)
+  keyPress(Key.KeyV)
+  await sleep(200)
+  // 按下-键
+  keyPress(Key.Minus)
+  keyPress(Key.KeyJ)
+  keyPress(Key.KeyS)
 }
 
 main()
+// console.log('hello world')
 
-function watch(direction, callback) {
-  rdev.listen((event) => {
-    if (event.type.direction === direction)
-      callback(event)
-  })
-
-  return () => process.exit(0)
-}
-
-const unwatch = watch('KeyPress', (event) => {
-  // console.log(event)
-
-  if (event.type.key === 'KeyQ')
-    unwatch()
-})
+// listen((e) => {
+//   console.log(e)
+// })
